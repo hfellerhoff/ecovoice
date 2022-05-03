@@ -1,0 +1,26 @@
+html,
+body {
+	background: #222;
+	color: whitesmoke;
+
+	font-family: 'Libre Bodoni', serif;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Libre Bodoni', serif;
+	z-index: 1;
+}
+p,
+span {
+	font-family: 'Inter', sans-serif;
+	z-index: 1;
+}
