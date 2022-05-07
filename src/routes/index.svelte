@@ -1,21 +1,26 @@
-<script>
+<script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
 	import MusicManager from '$lib/components/MusicManager.svelte';
 	import StartButton from '$lib/components/StartButton.svelte';
 
 	import BackgroundImage from '../lib/components/BackgroundImage.svelte';
-	//onReady
-
 	import Introduction from '$lib/sections/Introduction.svelte';
+	import MusicStart from '$lib/sections/MusicStart.svelte';
 
-	let hasStarted = false;
+	import * as Tone from 'tone';
 
-	const onStart = () => {
-		hasStarted = true;
+	let readyStates: Record<string, boolean> = {
+		start: false,
+		'music-start': false
+	};
+
+	const handleClick = (key: string) => () => {
+		Tone.start();
+		readyStates[key] = true;
 	};
 </script>
 
-<MusicManager {hasStarted} />
+<MusicManager hasStarted={readyStates.start} />
 
 <section>
 	<Logo />
@@ -25,11 +30,15 @@
 		Since the 1960s, algal blooms in the Great Lakes have been growing and intensifying. Now, they
 		threaten the stability of the Great Lakes ecosystems and the animals that live there.
 	</p>
-	<StartButton onClick={onStart} />
+	<StartButton onClick={handleClick('start')} />
 </section>
 
-<div class:hide={!hasStarted}>
-	<Introduction {hasStarted} />
+<div class:hide={!readyStates.start}>
+	<Introduction hasStarted={readyStates.start} onContinue={handleClick('music-start')} />
+</div>
+
+<div class:hide={!readyStates['music-start']}>
+	<MusicStart onContinue={handleClick('music-start')} />
 </div>
 
 <style>
