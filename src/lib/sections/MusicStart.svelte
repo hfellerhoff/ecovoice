@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PlaybackImage from '$lib/components/PlaybackImage.svelte';
 	import { barnSwallowPlays, redWingedBlackbirdPlays } from '$lib/stores/musicStore';
+	import * as Tone from 'tone';
 
 	import { scrollRef } from 'svelte-scrolling';
 	import ContinueButton from '../components/ContinueButton.svelte';
@@ -8,6 +9,7 @@
 	export let onContinue: () => void;
 
 	const handlePlayback = (bird: string) => () => {
+		Tone.start();
 		if (bird === 'red-winged-blackbird') redWingedBlackbirdPlays.set($redWingedBlackbirdPlays + 1);
 		if (bird === 'barn-swallow') barnSwallowPlays.set($barnSwallowPlays + 1);
 	};
@@ -38,7 +40,7 @@
 			onClick={handlePlayback('barn-swallow')}
 		/>
 	</div>
-	<ContinueButton scrollTo="music-start" onClick={onContinue}>Continue</ContinueButton>
+	<ContinueButton scrollTo="stage-1" onClick={onContinue}>Continue</ContinueButton>
 </section>
 
 <style>

@@ -12,7 +12,7 @@
 		if (!canClick) return;
 
 		onClick();
-		handleScroll();
+		if (scrollTo !== '') handleScroll();
 	};
 
 	let hasDelayed = false;
