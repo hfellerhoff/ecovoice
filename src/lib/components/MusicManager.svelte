@@ -2,7 +2,13 @@
 	import { sequences } from '$lib/sequences';
 
 	import { isToneReady } from '$lib/stores/loadingStore';
-	import { barnSwallowPlays, musicStage, redWingedBlackbirdPlays } from '$lib/stores/musicStore';
+	import {
+		barnSwallowPlays,
+		musicStage,
+		northernWatersnakePlays,
+		paintedTurtlePlays,
+		redWingedBlackbirdPlays
+	} from '$lib/stores/musicStore';
 
 	import { onMount } from 'svelte';
 	import * as Tone from 'tone';
@@ -46,6 +52,7 @@
 			...initSampler('/piano/', ['C'], 2, 6),
 			release: 1
 		}).toDestination();
+		synth.volume.value = -6;
 
 		ambiancePlayer = new Tone.Player('ambient-lake.mp3', () => {
 			ambiancePlayerLoaded = true;
@@ -105,8 +112,22 @@
 		}
 	}
 
+	$: {
+		if (synth && $northernWatersnakePlays > 0) {
+			playSequence(sequences['northern-watersnake'].sequence);
+		}
+	}
+
+	$: {
+		if (synth && $paintedTurtlePlays > 0) {
+			playSequence(sequences['painted-turtle'].sequence);
+		}
+	}
+
 	let blackbirdTimeout: NodeJS.Timeout;
 	let swallowTimeout: NodeJS.Timeout;
+	let watersnakeTimeout: NodeJS.Timeout;
+	let turtleTimeout: NodeJS.Timeout;
 	let minimumPlaybackTime = 0;
 	let maximumPlaybackTime = 0;
 
@@ -132,11 +153,21 @@
 			swallowTimeout = setTimeout(() => loopSequence(name, sequence), timeoutTime);
 			playSequence(sequences['barn-swallow'].sequence);
 		}
+		if (name === 'northern-watersnake') {
+			watersnakeTimeout = setTimeout(() => loopSequence(name, sequence), timeoutTime);
+			playSequence(sequences['northern-watersnake'].sequence);
+		}
+		if (name === 'painted-turtle') {
+			turtleTimeout = setTimeout(() => loopSequence(name, sequence), timeoutTime);
+			playSequence(sequences['painted-turtle'].sequence);
+		}
 	};
 
 	$: {
 		if (blackbirdTimeout) clearTimeout(blackbirdTimeout);
 		if (swallowTimeout) clearTimeout(swallowTimeout);
+		if (watersnakeTimeout) clearTimeout(watersnakeTimeout);
+		if (turtleTimeout) clearTimeout(turtleTimeout);
 
 		if ($musicStage === 1) {
 			minimumPlaybackTime = 1000;
@@ -159,9 +190,11 @@
 			maximumPlaybackTime = 7000;
 		}
 
-		if ($musicStage !== 0) {
+		if ($musicStage !== 0 && $musicStage <= 5) {
 			loopSequence('red-winged-blackbird', sequences['red-winged-blackbird'].sequence);
 			loopSequence('barn-swallow', sequences['barn-swallow'].sequence);
+			loopSequence('northern-watersnake', sequences['northern-watersnake'].sequence);
+			loopSequence('painted-turtle', sequences['painted-turtle'].sequence);
 		}
 	}
 </script>

@@ -1,6 +1,11 @@
 <script lang="ts">
 	import PlaybackImage from '$lib/components/PlaybackImage.svelte';
-	import { barnSwallowPlays, redWingedBlackbirdPlays } from '$lib/stores/musicStore';
+	import {
+		barnSwallowPlays,
+		northernWatersnakePlays,
+		paintedTurtlePlays,
+		redWingedBlackbirdPlays
+	} from '$lib/stores/musicStore';
 	import * as Tone from 'tone';
 
 	import { scrollRef } from 'svelte-scrolling';
@@ -12,6 +17,8 @@
 		Tone.start();
 		if (bird === 'red-winged-blackbird') redWingedBlackbirdPlays.set($redWingedBlackbirdPlays + 1);
 		if (bird === 'barn-swallow') barnSwallowPlays.set($barnSwallowPlays + 1);
+		if (bird === 'northern-watersnake') northernWatersnakePlays.set($northernWatersnakePlays + 1);
+		if (bird === 'painted-turtle') paintedTurtlePlays.set($paintedTurtlePlays + 1);
 	};
 </script>
 
@@ -25,19 +32,19 @@
 			onClick={handlePlayback('red-winged-blackbird')}
 		/>
 		<PlaybackImage
-			src="red-winged-blackbird.jpg"
-			alt="Red-winged blackbird"
-			onClick={handlePlayback('red-winged-blackbird')}
-		/>
-		<PlaybackImage
 			src="barn-swallow.jpg"
 			alt="Barn swallow"
 			onClick={handlePlayback('barn-swallow')}
 		/>
 		<PlaybackImage
-			src="barn-swallow.jpg"
-			alt="Barn swallow"
-			onClick={handlePlayback('barn-swallow')}
+			src="northern-watersnake.jpg"
+			alt="Northern watersnake"
+			onClick={handlePlayback('northern-watersnake')}
+		/>
+		<PlaybackImage
+			src="painted-turtle.jpg"
+			alt="Painted turtle"
+			onClick={handlePlayback('painted-turtle')}
 		/>
 	</div>
 	<ContinueButton scrollTo="stage-1" onClick={onContinue}>Continue</ContinueButton>

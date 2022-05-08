@@ -21,7 +21,7 @@
 		'stage-3': false,
 		'stage-4': false,
 		'stage-5': false,
-		end: false
+		'stage-6': false
 	};
 
 	const handleClick = (key: string) => () => {
@@ -101,12 +101,12 @@
 			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
 			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
 		</p>
-		<ContinueButton scrollTo="end" onClick={handleClick('end')}>Continue</ContinueButton>
+		<ContinueButton scrollTo="stage-6" onClick={handleClick('stage-6')}>Continue</ContinueButton>
 	</section>
 </div>
 
-<div class:hide={!readyStates['end']}>
-	<section use:scrollRef={'end'}>
+<div class:hide={!readyStates['stage-6']}>
+	<section use:scrollRef={'stage-6'}>
 		<p>
 			Final information about the EcoVoice Project. Amet velit Lorem amet irure duis nostrud non
 			eiusmod labore ea dolor pariatur ex dolor. Qui consequat tempor occaecat mollit voluptate
