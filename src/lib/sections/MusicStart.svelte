@@ -24,7 +24,11 @@
 
 <section use:scrollRef={'music-start'}>
 	<h2>A Lively Ecosystem</h2>
-	<p>The western basin of Lake Erie is home to</p>
+	<p>
+		The western basin of Lake Erie is home to a variety of species, all of which contribute to
+		create a thriving and lively ecosystem. Click or tap on the images below to take a listen to
+		that ecosystem, with musical lines inspired from the animals' calls.
+	</p>
 	<div class="grid">
 		<PlaybackImage
 			src="red-winged-blackbird.jpg"
@@ -55,5 +59,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		margin: 0 8rem;
+	}
+
+	p {
+		max-width: 48rem;
+		text-align: center;
 	}
 </style>
