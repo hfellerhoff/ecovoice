@@ -57,50 +57,35 @@
 
 <div class:hide={!readyStates['stage-1']}>
 	<section use:scrollRef={'stage-1'}>
-		<p>
-			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
-			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
-		</p>
+		<p>Ecosystem Stage 1/5</p>
 		<ContinueButton scrollTo="stage-2" onClick={handleClick('stage-2')}>Continue</ContinueButton>
 	</section>
 </div>
 
 <div class:hide={!readyStates['stage-2']}>
 	<section use:scrollRef={'stage-2'}>
-		<p>
-			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
-			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
-		</p>
+		<p>Ecosystem Stage 2/5</p>
 		<ContinueButton scrollTo="stage-3" onClick={handleClick('stage-3')}>Continue</ContinueButton>
 	</section>
 </div>
 
 <div class:hide={!readyStates['stage-3']}>
 	<section use:scrollRef={'stage-3'}>
-		<p>
-			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
-			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
-		</p>
+		<p>Ecosystem Stage 3/5</p>
 		<ContinueButton scrollTo="stage-4" onClick={handleClick('stage-4')}>Continue</ContinueButton>
 	</section>
 </div>
 
 <div class:hide={!readyStates['stage-4']}>
 	<section use:scrollRef={'stage-4'}>
-		<p>
-			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
-			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
-		</p>
+		<p>Ecosystem Stage 4/5</p>
 		<ContinueButton scrollTo="stage-5" onClick={handleClick('stage-5')}>Continue</ContinueButton>
 	</section>
 </div>
 
 <div class:hide={!readyStates['stage-5']}>
 	<section use:scrollRef={'stage-5'}>
-		<p>
-			Aliquip culpa do sint adipisicing. Elit nisi dolor excepteur in in. Eiusmod esse id non sunt
-			irure nostrud irure occaecat elit dolore in. Nisi ad et adipisicing aliquip.
-		</p>
+		<p>Ecosystem Stage 5/5</p>
 		<ContinueButton scrollTo="stage-6" onClick={handleClick('stage-6')}>Continue</ContinueButton>
 	</section>
 </div>
